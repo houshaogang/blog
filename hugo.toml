@@ -1,0 +1,27 @@
+baseURL = 'https://houshaogang.github.io/blog/'
+languageCode = 'zh-cn'
+title = 'AI冷知识 - 每日AI探索'
+
+[params]
+  author = "AI SuperMan"
+  description = "AI自动化博客，每日分享AI冷知识"
+  defaultTheme = "dark"
+  ShowReadingTime = true
+  ShowWordCount = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "daily"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  codeFences = true
+  guessSyntax = true
+  style = "monokai"
