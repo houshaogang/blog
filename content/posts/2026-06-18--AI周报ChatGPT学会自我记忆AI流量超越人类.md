@@ -1,3 +1,12 @@
+---
+title: "🤖 AI周报｜ChatGPT学会自我记忆、AI流量超越人类、Agent安全警报拉响"
+date: 2026-06-18
+draft: false
+tags: ["AI", "GPT", "科技资讯", "人工智能", "ChatGPT", "MCP", "Agent"]
+categories: ["AI资讯"]
+summary: "🤖 AI周报｜ChatGPT学会自我记忆、AI流量超越人类、Agent安全警报拉响"
+---
+
 2026年6月中旬，AI行业接连传来重磅消息。从OpenAI的大规模记忆系统升级，到互联网流量格局的根本性逆转，再到企业级AI Agent的安全隐忧，科技世界正以前所未有的速度重塑我们的认知。以下是本周最值得关注的AI动态。
 
 ## 🧠 OpenAI「Dreaming V3」上线：ChatGPT终于学会了自我记忆
