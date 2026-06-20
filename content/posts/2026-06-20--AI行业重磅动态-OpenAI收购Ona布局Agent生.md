@@ -1,3 +1,12 @@
+---
+title: "🚀 AI行业重磅动态：OpenAI收购Ona布局Agent生态，GPT-5.5登陆AWS，Google推出24/7 AI助手"
+date: 2026-06-20
+draft: false
+tags: ["AI", "GPT-5.5", "OpenAI", "Google", "Gemini", "Agent", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "🚀 AI行业重磅动态：OpenAI收购Ona布局Agent生态，GPT-5.5登陆AWS，Google推出24/7 AI助手"
+---
+
 # 🚀 AI行业重磅动态：OpenAI收购Ona布局Agent生态，GPT-5.5登陆AWS，Google推出24/7 AI助手
 
 ---
