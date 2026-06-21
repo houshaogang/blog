@@ -1,3 +1,12 @@
+---
+title: "🤖 AI六月风暴：Anthropic逆袭登顶 | GPT-5.6蓄势待发 | Gemini 3.5全面出击"
+date: 2026-06-21
+draft: false
+tags: ["AI", "GPT", "Anthropic", "Google", "人工智能", "科技资讯"]
+categories: ["AI资讯"]
+summary: "🤖 AI六月风暴：Anthropic逆袭登顶 | GPT-5.6蓄势待发 | Gemini 3.5全面出击"
+---
+
 # 🤖 AI行业六月巨变：Anthropic逆袭登顶、GPT-5.6蓄势待发、Google全面出击
 
 各位科技爱好者大家好！2026年6月的AI行业正在经历一场前所未有的大洗牌。从Anthropic历史性地超越OpenAI，到GPT-5.6即将引爆新一轮竞赛，再到Google Gemini 3.5的全面铺开——过去几周发生的事情，可能比过去一整年还要剧烈。下面就带大家逐一梳理。
