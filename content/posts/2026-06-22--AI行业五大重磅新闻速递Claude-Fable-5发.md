@@ -1,3 +1,12 @@
+---
+title: "🔮 AI行业五大重磅新闻速递｜Claude Fable 5发布、ChatGPT份额跌破50%、AI Agent全面爆发"
+date: 2026-06-22
+draft: false
+tags: ["AI", "GPT-5", "Anthropic", "Claude", "Gemini", "AI Agent", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "🔮 AI行业五大重磅新闻速递｜Claude Fable 5发布、ChatGPT份额跌破50%、AI Agent全面爆发"
+---
+
 AI行业最新动态速递 — 2026年6月第三周
 
 2026年的AI赛道正以前所未有的速度演进。本周，从Anthropic发布最强模型到ChatGPT市场份额跌破50%，再到企业级AI Agent全面爆发，每一条消息都在重塑我们对人工智能未来的认知。以下是本周最值得关注的五大AI新闻。
