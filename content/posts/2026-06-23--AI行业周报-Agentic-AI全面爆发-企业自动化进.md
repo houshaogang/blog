@@ -1,3 +1,12 @@
+---
+title: "🤖 AI行业周报：Agentic AI全面爆发，企业自动化进入新时代"
+date: 2026-06-23
+draft: false
+tags: ["AI", "GPT", "Claude", "Gemini", "Agentic AI", "科技资讯", "人工智能", "企业自动化"]
+categories: ["AI资讯"]
+summary: "🤖 AI行业周报：Agentic AI全面爆发，企业自动化进入新时代"
+---
+
 # 🤖 AI行业周报：Agentic AI全面爆发，企业自动化进入新时代
 
 ## 📌 本周AI行业动态概览
