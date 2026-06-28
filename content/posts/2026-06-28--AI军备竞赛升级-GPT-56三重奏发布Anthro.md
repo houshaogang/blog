@@ -1,3 +1,12 @@
+---
+title: "🤖 AI军备竞赛升级：GPT-5.6三重奏发布、Anthropic突围出口管制、微信AI Agent蓄势待发"
+date: 2026-06-28
+draft: false
+tags: ["AI", "GPT-5.6", "Anthropic", "Mythos", "微信", "DeepSeek", "科技资讯", "人工智能", "Agent"]
+categories: ["AI资讯"]
+summary: "🤖 AI军备竞赛升级：GPT-5.6三重奏发布、Anthropic突围出口管制、微信AI Agent蓄势待发"
+---
+
 AI行业正在经历一场前所未有的变革。就在过去的48小时内，多条重磅消息接连轰炸科技圈——OpenAI发布新一代模型GPT-5.6、Anthropic在出口管制风波中艰难突围、腾讯将DeepSeek引入微信生态。AI军备竞赛已经从"谁的模型更聪明"升级为"谁的生态更强大"。让我们逐一拆解这些大事背后的趋势。
 
 ## 🔥 OpenAI发布GPT-5.6：太阳、地球与月亮的三重奏
