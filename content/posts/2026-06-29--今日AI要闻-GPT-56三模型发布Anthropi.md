@@ -1,3 +1,12 @@
+---
+title: "🔥 今日AI要闻：GPT-5.6三模型发布、Anthropic收入逆袭、Windows变身Agent平台"
+date: 2026-06-29
+draft: false
+tags: ["AI", "GPT-5.6", "OpenAI", "Anthropic", "Claude", "科技资讯", "人工智能", "微软", "SpaceX"]
+categories: ["AI资讯"]
+summary: "🔥 今日AI要闻：GPT-5.6三模型发布、Anthropic收入逆袭、Windows变身Agent平台"
+---
+
 ## 🚀 OpenAI发布GPT-5.6三模型家族：Sol、Terra、Luna震撼登场
 
 2026年6月26日，OpenAI正式发布了GPT-5.6系列模型——这是自GPT-5.5以来最重大的一次模型更新。与以往不同的是，这次OpenAI一次性推出了三个模型：**Sol**（旗舰级）、**Terra**（中端均衡）、**Luna**（轻量高效），每个模型都针对不同的成本-性能平衡点进行了优化。
