@@ -1,3 +1,12 @@
+---
+title: "AI Agent生态大战：GPT-5.6超长上下文、Claude Cowork桌面化、AWS配额5倍提升"
+date: 2026-07-03
+draft: false
+tags: ["AI", "GPT-5.6", "Claude", "AWS", "Agent", "科技资讯", "人工智能", "2026"]
+categories: ["AI资讯"]
+summary: "AI Agent生态大战：GPT-5.6超长上下文、Claude Cowork桌面化、AWS配额5倍提升"
+---
+
 ## 📊 AI模型迭代加速：GPT-5.6即将登场，150万token上下文窗口引关注
 
 OpenAI的模型更新节奏在2026年明显加快。继5月份发布GPT-5.3 Instant（幻觉率降低26.8%、减少不必要拒绝）之后，6月份又推出了GPT-5.5 Instant版本。而更重磅的消息是——GPT-5.6已经进入发布窗口期，最引人注目的是其**150万token的上下文窗口**，以及重新设计的对齐机制。
