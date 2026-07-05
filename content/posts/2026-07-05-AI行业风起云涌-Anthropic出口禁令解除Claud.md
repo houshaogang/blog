@@ -1,3 +1,12 @@
+---
+title: "AI行业风起云涌：Anthropic出口禁令解除、Claude Sonnet 5发布、世界AI大会即将开幕"
+date: 2026-07-05
+draft: false
+tags: ["AI", "GPT", "Claude", "Gemini", "科技资讯", "人工智能", "Anthropic", "OpenAI", "Google"]
+categories: ["AI资讯"]
+summary: "AI行业风起云涌：Anthropic出口禁令解除、Claude Sonnet 5发布、世界AI大会即将开幕"
+---
+
 # 🤖 AI行业风起云涌：Anthropic出口禁令解除、Claude Sonnet 5发布、世界AI大会即将开幕
 
 ## 📌 本文要点
