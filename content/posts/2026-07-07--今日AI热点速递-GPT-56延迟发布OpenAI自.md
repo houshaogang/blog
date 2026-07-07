@@ -1,3 +1,12 @@
+---
+title: "📰 今日AI热点速递：GPT-5.6延迟发布、OpenAI自研芯片、Meta追赶GPT-5.5、中国AI Agent大变天"
+date: 2026-07-07
+draft: false
+tags: ["AI", "GPT", "科技资讯", "人工智能", "OpenAI", "Meta", "监管"]
+categories: ["AI资讯"]
+summary: "📰 今日AI热点速递：GPT-5.6延迟发布、OpenAI自研芯片、Meta追赶GPT-5.5、中国AI Agent大变天"
+---
+
 # 今日AI热点速递：GPT-5.6延迟发布、OpenAI自研芯片、Meta追赶GPT-5.5、中国AI Agent大变天
 
 大家好，欢迎阅读今日AI资讯速递！今天是07月07日，AI行业又迎来了一波重磅消息。从OpenAI的最新模型争议到自研芯片的震撼亮相，从Meta的追赶宣言到中国AI监管的剧变，每一条都值得我们深入关注。让我们逐一解读。
