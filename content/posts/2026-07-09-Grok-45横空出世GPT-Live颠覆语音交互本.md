@@ -1,3 +1,12 @@
+---
+title: "Grok 4.5横空出世、GPT-Live颠覆语音交互——本周AI圈炸了！"
+date: 2026-07-09
+draft: false
+tags: ["AI", "GPT", "Grok", "Claude", "人工智能", "科技资讯", "语音交互", "AI Agent"]
+categories: ["AI资讯"]
+summary: "Grok 4.5横空出世、GPT-Live颠覆语音交互——本周AI圈炸了！"
+---
+
 # 🚀 Grok 4.5横空出世、GPT-Live颠覆语音交互——本周AI圈炸了！
 
 > 2026年7月，AI行业迎来了一场前所未有的「超级周」。SpaceX带着半价杀手锏杀入战场，OpenAI用全双工语音彻底改写人机对话规则，Anthropic让Claude走出了电脑屏幕，而企业级AI Agent赛道正以惊人的速度崛起。让我们逐一拆解这些重磅事件。
