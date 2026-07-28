@@ -1,3 +1,12 @@
+---
+title: "📰 七月AI大事件：GPT-5.6三版本齐发、Claude Opus 5百万上下文、微软25亿押注企业AI"
+date: 2026-07-28
+draft: false
+tags: ["AI", "GPT-5.6", "Claude", "Opus", "微软", "Anthropic", "OpenAI", "科技资讯", "人工智能", "AI Agent"]
+categories: ["AI资讯"]
+summary: "📰 七月AI大事件：GPT-5.6三版本齐发、Claude Opus 5百万上下文、微软25亿押注企业AI"
+---
+
 七月的最后一周，AI行业炸开了锅。OpenAI、Anthropic、微软三大巨头接连放出重磅消息，AI Agent（智能体）的企业采用率也飙升到了令人咋舌的数字。今天我们就来盘点一下这几件值得关注的大事。
 
 ---
