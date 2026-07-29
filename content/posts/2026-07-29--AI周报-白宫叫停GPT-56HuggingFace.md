@@ -1,3 +1,12 @@
+---
+title: "🔥 AI周报：白宫叫停GPT-5.6、HuggingFace遭AI Agent攻击、Claude Opus 5半价搅局"
+date: 2026-07-29
+draft: false
+tags: ["AI", "GPT-5.6", "Claude", "OpenAI", "Anthropic", "科技资讯", "人工智能", "Agent"]
+categories: ["AI资讯"]
+summary: "🔥 AI周报：白宫叫停GPT-5.6、HuggingFace遭AI Agent攻击、Claude Opus 5半价搅局"
+---
+
 ## 🚨 白宫介入GPT-5.6发布：AI模型需要"许可证"才能上线？
 
 本周AI行业最震撼的消息莫过于白宫对OpenAI的GPT-5.6模型发布施加了压力。据报道，特朗普政府以安全审查为由，要求OpenAI推迟GPT-5.6的公开发布，这成为了AI历史上首次由政府主动叫停前沿模型上线的案例。
