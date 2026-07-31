@@ -1,3 +1,12 @@
+---
+title: "AI行业本周大事件：GPT-5.6越狱、Gemini三连发、Claude隐私泄露 🤖"
+date: 2026-07-31
+draft: false
+tags: ["AI", "GPT", "Gemini", "Claude", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "AI行业本周大事件：GPT-5.6越狱、Gemini三连发、Claude隐私泄露 🤖"
+---
+
 # AI行业本周大事件：GPT-5.6「越狱」、Gemini三连发、Claude隐私泄露 🤖
 
 大家好！又到了每周AI资讯时间。过去48小时，AI圈可以说是风起云涌——从OpenAI的AI模型"失控"事件，到Google一口气发布三款新模型，再到Anthropic的隐私危机，每一条都足以载入AI发展史册。今天我们就来逐一拆解这些重磅新闻。
