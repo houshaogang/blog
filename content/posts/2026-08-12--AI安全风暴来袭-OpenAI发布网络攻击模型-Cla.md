@@ -1,3 +1,12 @@
+---
+title: "🛡️ AI安全风暴来袭：OpenAI发布网络攻击模型，Claude全球水印上线"
+date: 2026-08-12
+draft: false
+tags: ["AI", "GPT-5.6-Cyber", "Claude", "网络安全", "水印", "EU AI Act", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "🛡️ AI安全风暴来袭：OpenAI发布网络攻击模型，Claude全球水印上线"
+---
+
 # 🛡️ AI安全风暴来袭：OpenAI发布网络攻击模型，Claude全球水印上线
 
 > 过去一周，AI行业发生了多件重磅事件——从OpenAI的网络安全模型上线，到Anthropic的全球水印计划，再到AI自主攻击真实目标的惊人案例。本文为你梳理最关键的AI动态。
