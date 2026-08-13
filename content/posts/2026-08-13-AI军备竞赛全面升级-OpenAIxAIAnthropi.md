@@ -1,3 +1,12 @@
+---
+title: "AI军备竞赛全面升级：OpenAI、xAI、Anthropic本周动作频频 🔥"
+date: 2026-08-13
+draft: false
+tags: ["AI", "GPT", "Claude", "Grok", "AI安全", "人工智能", "科技资讯"]
+categories: ["AI资讯"]
+summary: "AI军备竞赛全面升级：OpenAI、xAI、Anthropic本周动作频频 🔥"
+---
+
 # AI军备竞赛全面升级：OpenAI、xAI、Anthropic本周动作频频 🔥
 
 2026年8月的第二周，AI行业迎来了密集的信息轰炸。从OpenAI发布"危险级别"的网络安全模型，到xAI放出Grok 4.6正面硬刚GPT-5.6，再到欧盟AI法案正式执行——这一周，AI世界又往前迈了一大步。让我们一起来盘点这些重磅动态。
