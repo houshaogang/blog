@@ -1,3 +1,12 @@
+---
+title: "🚀 AI行业重磅周报｜OpenAI推出14倍速Ultrafast、Gemini用户破10亿、Claude安全事件敲响警钟"
+date: 2026-08-15
+draft: false
+tags: ["AI", "GPT", "科技资讯", "人工智能", "OpenAI", "Google", "Gemini", "Anthropic", "Claude"]
+categories: ["AI资讯"]
+summary: "🚀 AI行业重磅周报｜OpenAI推出14倍速Ultrafast、Gemini用户破10亿、Claude安全事件敲响警钟"
+---
+
 # 今日AI博客 - 2026年8月15日
 
 ## 📰 今日AI博客已发布！
