@@ -1,3 +1,12 @@
+---
+title: "🔥 本周AI大事件：Google地震、Agent失控、苹果联手阿里、DeepSeek开源新王"
+date: 2026-08-16
+draft: false
+tags: ["AI", "GPT", "科技资讯", "人工智能", "Google", "DeepSeek", "Apple"]
+categories: ["AI资讯"]
+summary: "🔥 本周AI大事件：Google地震、Agent失控、苹果联手阿里、DeepSeek开源新王"
+---
+
 AI行业本周发生了多件大事，从Google的人事地震到AI Agent安全危机，再到中国开源模型的激烈竞争，每一个话题都值得深入探讨。以下是本周最值得关注的AI动态。
 
 ## 🔥 Google DeepMind大洗牌：Sergey Brin亲自督战Gemini
