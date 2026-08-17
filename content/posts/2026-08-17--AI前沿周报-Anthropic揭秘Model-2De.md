@@ -1,3 +1,12 @@
+---
+title: "🧠 AI前沿周报：Anthropic揭秘Model 2、DeepSeek V4 Pro正式发布、企业Agent爆发增长"
+date: 2026-08-17
+draft: false
+tags: ["AI", "GPT", "Claude", "DeepSeek", "科技资讯", "人工智能", "AI Agent"]
+categories: ["AI资讯"]
+summary: "🧠 AI前沿周报：Anthropic揭秘Model 2、DeepSeek V4 Pro正式发布、企业Agent爆发增长"
+---
+
 # 🧠 AI前沿周报：Anthropic揭秘"Model 2"、DeepSeek V4 Pro正式版发布、企业Agent爆发增长
 
 ## 一、Anthropic发布8月风险报告：内部"Model 2"震撼亮相，但暂不公开
