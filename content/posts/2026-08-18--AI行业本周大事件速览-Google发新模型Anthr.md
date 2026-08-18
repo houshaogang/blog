@@ -1,3 +1,12 @@
+---
+title: "🚀 AI行业本周大事件速览：Google发新模型、Anthropic水印争议、OpenAI高管地震"
+date: 2026-08-18
+draft: false
+tags: ["AI", "GPT", "Gemini", "Anthropic", "Claude", "Google", "OpenAI", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "🚀 AI行业本周大事件速览：Google发新模型、Anthropic水印争议、OpenAI高管地震"
+---
+
 # 🚀 AI行业本周大事件速览：Google发新模型、Anthropic水印争议、OpenAI高管地震
 
 > 科技圈从不缺故事，而这一周的AI行业更是精彩纷呈。从Google Gemini 3.7 Flash的悄然登场，到Anthropic的水印争议，再到OpenAI上市前的高管地震——每一条新闻都足以载入AI发展史。
