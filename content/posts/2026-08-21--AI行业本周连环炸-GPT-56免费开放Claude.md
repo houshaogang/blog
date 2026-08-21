@@ -1,3 +1,12 @@
+---
+title: "🔥 AI行业本周连环炸：GPT-5.6免费开放、Claude开除人类员工、Google AI变身学习神器"
+date: 2026-08-21
+draft: false
+tags: ["AI", "GPT-5.6", "Claude", "Google", "Gemini", "科技资讯", "人工智能", "AI agent"]
+categories: ["AI资讯"]
+summary: "🔥 AI行业本周连环炸：GPT-5.6免费开放、Claude开除人类员工、Google AI变身学习神器"
+---
+
 AI行业本周连环炸：GPT-5.6免费开放、Claude开除人类员工、Google AI变身学习神器
 
 ## 🔥 GPT-5.6 Luna免费开放，OpenAI的"普惠AI"野心
