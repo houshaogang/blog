@@ -1,3 +1,12 @@
+---
+title: "📰 AI周报：GPT-5.4首超人类基准，Google代理学会打电话，Binance开放AI交易"
+date: 2026-08-23
+draft: false
+tags: ["AI", "GPT-5.4", "OpenAI", "Google", "Binance", "人工智能", "科技资讯"]
+categories: ["AI资讯"]
+summary: "📰 AI周报：GPT-5.4首超人类基准，Google代理学会打电话，Binance开放AI交易"
+---
+
 ## 🤖 GPT-5.4首次超越人类基准，AI能力再上新台阶
 
 本周最重磅的消息来自OpenAI——其最新模型GPT-5.4在OSWorld-V基准测试中取得75%的成绩，首次超越人类基线的72.4%。这意味着GPT-5.4成为历史上第一个在该基准上击败普通人类水平的AI系统。
