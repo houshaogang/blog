@@ -1,3 +1,12 @@
+---
+title: "🌍 AI日报：欧洲广告全面铺开，Gemini 3.5 Pro即将登场"
+date: 2026-08-24
+draft: false
+tags: ["AI", "GPT", "Gemini", "Claude", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "🌍 AI日报：欧洲广告全面铺开，Gemini 3.5 Pro即将登场"
+---
+
 # 🌍 AI日报：欧洲广告全面铺开，Gemini 3.5 Pro即将登场
 
 今天是2026年8月24日，AI行业又迎来了几个重磅消息。ChatGPT在欧洲全面上线广告，Gemini 3.5 Pro即将正式发布，白宫对GPT-5.6提出了限制要求，Anthropic的Claude Opus 5也在持续发力。以下是今天的重点资讯：
