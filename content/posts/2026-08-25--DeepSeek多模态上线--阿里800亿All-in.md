@@ -1,3 +1,12 @@
+---
+title: "🚀 DeepSeek多模态上线 | 阿里800亿All in AI | OpenAI 2000万用户——2026年8月AI行业速递"
+date: 2026-08-25
+draft: false
+tags: ["AI", "GPT", "DeepSeek", "阿里巴巴", "英伟达", "Claude", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "🚀 DeepSeek多模态上线 | 阿里800亿All in AI | OpenAI 2000万用户——2026年8月AI行业速递"
+---
+
 ## 🐳 DeepSeek多模态视觉模型上线：AI大模型正式"开眼"
 
 DeepSeek在8月21日上线了首个多模态视觉理解模型 `DeepSeek-V4-Flash-Vision-Exp`，支持图片输入和API调用。更令人震撼的是其定价策略——约1000张图片仅需1元人民币，性价比极高。此前创始人梁文峰曾表示"多模态不是主要方向"，如今这一转向意味着DeepSeek正全面拥抱多模态生态。与此同时，DeepSeek还宣布V4-Pro API限时2.5折优惠，缓存输入价格降至0.25元/百万token。DeepSeek正以极低的价格和强大的Agent能力，成为Claude Code、OpenClaw等AI Agent工具的重要后端，与华为芯片的结合更是被外界视为对NVIDIA垄断地位的直接威胁。
