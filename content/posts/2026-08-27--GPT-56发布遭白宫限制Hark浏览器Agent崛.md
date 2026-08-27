@@ -1,3 +1,12 @@
+---
+title: "🔥 GPT-5.6发布遭白宫限制、Hark浏览器Agent崛起、Kimi K3万亿开源——2026年8月AI行业一周速递"
+date: 2026-08-27
+draft: false
+tags: ["AI", "GPT-5.6", "人工智能", "Kimi K3", "Hark", "科技资讯"]
+categories: ["AI资讯"]
+summary: "🔥 GPT-5.6发布遭白宫限制、Hark浏览器Agent崛起、Kimi K3万亿开源——2026年8月AI行业一周速递"
+---
+
 ## 🔥 GPT-5.6震撼发布，白宫紧急介入限制开放
 
 本周最重磅的消息莫过于OpenAI正式发布了GPT-5.6系列模型。此次发布包含三个变体——Sol（速度优化）、Terra（平衡性能）和Luna（最高智能），覆盖了从高速推理到深度思考的完整场景。GPT-5.6 Sol在Artificial Analysis智能指数上达到59分，仅落后Claude Fable 5一分，但成本仅为后者的三分之一。
