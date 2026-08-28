@@ -2,10 +2,10 @@
 title: "父母老去的真相：我们终于活成了他们的样子"
 date: 2026-06-22
 author: "深夜解忧铺"
-cover: "cover_" + slug + ".png"
+cover: "cover.png"
 description: "你以为来日方长，直到某天发现，父母的白发不再是零星几根。"
 tags: ["父母老去", "亲情", "深夜emo", "80后", "90后"]
-category: "深夜解忧铺"
+categories: ["深夜解忧铺"]
 ---
 
 # 父母老去的真相：我们终于活成了他们的样子
