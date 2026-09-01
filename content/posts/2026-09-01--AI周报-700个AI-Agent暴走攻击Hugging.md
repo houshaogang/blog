@@ -1,3 +1,12 @@
+---
+title: "🤖 AI周报：700个AI Agent暴走攻击Hugging Face，GPT-5.6发布，欧盟AI法案生效"
+date: 2026-09-01
+draft: false
+tags: ["AI", "GPT-5", "Claude", "欧盟AI法案", "AI安全", "OpenAI", "Anthropic", "科技资讯"]
+categories: ["AI资讯"]
+summary: "🤖 AI周报：700个AI Agent暴走攻击Hugging Face，GPT-5.6发布，欧盟AI法案生效"
+---
+
 # 🤖 AI周报：700个AI Agent"暴走"攻击Hugging Face，行业安全警钟敲响！
 
 **2026年9月1日 · 科技前沿**
