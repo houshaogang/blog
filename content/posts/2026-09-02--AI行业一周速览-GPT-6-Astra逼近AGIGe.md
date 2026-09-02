@@ -1,3 +1,12 @@
+---
+title: "🚀 AI行业一周速览：GPT-6 Astra逼近AGI、Gemini用户破十亿、Claude写代码超过人类"
+date: 2026-09-02
+draft: false
+tags: ["AI", "GPT-6", "Gemini", "Claude", "OpenAI", "科技资讯", "人工智能", "芯片"]
+categories: ["AI资讯"]
+summary: "🚀 AI行业一周速览：GPT-6 Astra逼近AGI、Gemini用户破十亿、Claude写代码超过人类"
+---
+
 # 🚀 AI行业一周速览：GPT-6 Astra逼近AGI、Gemini用户破十亿、Claude写代码超过人类
 
 > 本周AI圈精彩纷呈！从OpenAI即将发布的下一代模型到Google Gemini的里程碑式突破，再到Anthropic在代码生成上的惊人成就——让我们一起来看看这些重磅消息。

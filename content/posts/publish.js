@@ -1,207 +1,368 @@
-const fs = require('fs');
-const path = require('path');
 const https = require('https');
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
-const TITLE = "凌晨三点，我突然想起妈妈的白发";
-const DIGEST = "凌晨三点突然醒来，想起妈妈弯腰切菜时白了一片的头发。那些平淡的日子，其实是妈妈用命在撑。";
-const SLUG = "2026-08-31-mama-baifa";
-const MD_PATH = "D:/blog/content/posts/" + SLUG + ".md";
-const ENV_PATH = "D:/blog/scripts/.env";
+// Config
+const ARTICLE_DATE = '2026-09-02';
+const POSTS_DIR = 'D:/blog/content/posts';
+const ENV_FILE = 'D:/blog/scripts/.env';
+const TITLE = '80后90后的失眠：我们为什么越长大越睡不着';
+const DIGEST = '小时候倒头就睡，长大后却在深夜睁着眼。你的失眠，不是你的错，是这个时代给认真生活的人留下的后遗症。';
 
-function loadEnv() {
-    const env = {};
-    try {
-        const lines = fs.readFileSync(ENV_PATH, 'utf-8').split('\n');
-        for (const line of lines) {
-            const t = line.trim();
-            if (t.includes('=') && !t.startsWith('#')) {
-                const eq = t.indexOf('=');
-                const k = t.substring(0, eq).trim();
-                const v = t.substring(eq + 1).trim().replace(/^["']|["']$/g, '');
-                if (!env[k]) env[k] = v;
-            }
+// Read .env
+function readEnv(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const lines = content.split('\n');
+  const env = {};
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+      const eqIdx = trimmed.indexOf('=');
+      env[trimmed.substring(0, eqIdx).trim()] = trimmed.substring(eqIdx + 1).trim();
+    }
+  }
+  return env;
+}
+
+// Simple HTTP GET
+function httpGet(url) {
+  return new Promise((resolve, reject) => {
+    const client = url.startsWith('https') ? https : http;
+    const req = client.get(url, { timeout: 120000 }, (res) => {
+      if (res.statusCode === 302 || res.statusCode === 301) {
+        return httpGet(res.headers.location).then(resolve).catch(reject);
+      }
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => resolve(Buffer.concat(chunks)));
+      res.on('error', reject);
+    });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+  });
+}
+
+// Simple HTTP POST JSON
+function httpPostJson(url, data) {
+  return new Promise((resolve, reject) => {
+    const parsed = new URL(url);
+    const postData = JSON.stringify(data);
+    const options = {
+      hostname: parsed.hostname,
+      port: parsed.port || 443,
+      path: parsed.pathname + parsed.search,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(postData),
+      },
+    };
+    const client = url.startsWith('https') ? https : http;
+    const req = client.request(options, (res) => {
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(Buffer.concat(chunks).toString()));
+        } catch (e) {
+          reject(new Error('Invalid JSON: ' + Buffer.concat(chunks).toString()));
         }
-    } catch (e) { console.error('Failed to read env:', e.message); }
-    return { appId: env.WEIXIN_APP_ID, appSecret: env.WEIXIN_APP_SECRET };
-}
-
-function httpGet(url, timeout) {
-    timeout = timeout || 15000;
-    return new Promise((resolve, reject) => {
-        const mod = url.startsWith('https') ? https : http;
-        mod.get(url, { timeout }, (res) => {
-            if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                return httpGet(res.headers.location, timeout).then(resolve, reject);
-            }
-            const chunks = [];
-            res.on('data', c => chunks.push(c));
-            res.on('end', () => resolve(Buffer.concat(chunks)));
-        }).on('error', reject);
+      });
+      res.on('error', reject);
     });
+    req.on('error', reject);
+    req.write(postData);
+    req.end();
+  });
 }
 
-function httpsPost(url, payload, ct) {
-    return new Promise((resolve, reject) => {
-        const u = new URL(url);
-        const data = typeof payload === 'string' ? payload : JSON.stringify(payload);
-        const mod = u.protocol === 'https:' ? https : http;
-        const opts = {
-            hostname: u.hostname, port: u.port,
-            path: u.pathname + u.search, method: 'POST',
-            headers: { 'Content-Type': ct, 'Content-Length': Buffer.byteLength(data) },
-            timeout: 30000
-        };
-        const req = mod.request(opts, (res) => {
-            let b = '';
-            res.on('data', c => b += c);
-            res.on('end', () => { try { resolve(JSON.parse(b)); } catch(e) { resolve({ raw: b }); } });
-        });
-        req.on('error', reject); req.write(data); req.end();
+// Simple HTTP GET returning JSON
+function httpGetJson(url) {
+  return new Promise((resolve, reject) => {
+    const client = url.startsWith('https') ? https : http;
+    const req = client.get(url, { timeout: 30000 }, (res) => {
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(Buffer.concat(chunks).toString()));
+        } catch (e) {
+          reject(new Error('Invalid JSON: ' + Buffer.concat(chunks).toString()));
+        }
+      });
+      res.on('error', reject);
     });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+  });
 }
 
-function httpsPostMultipart(url, filePath) {
-    return new Promise((resolve, reject) => {
-        const boundary = '----WebKitFormBoundary' + Math.random().toString(36).slice(2);
-        const fileData = fs.readFileSync(filePath);
-        const ext = path.extname(filePath).toLowerCase();
-        const fileCt = (ext === '.jpg' || ext === '.jpeg') ? 'image/jpeg' : 'image/png';
-        const prefix = Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="media"; filename="' + path.basename(filePath) + '"\r\nContent-Type: ' + fileCt + '\r\n\r\n');
-        const suffix = Buffer.from('\r\n--' + boundary + '--\r\n');
-        const body = Buffer.concat([prefix, fileData, suffix]);
-        const u = new URL(url);
-        const mod = u.protocol === 'https:' ? https : http;
-        const opts = {
-            hostname: u.hostname, port: u.port,
-            path: u.pathname + u.search, method: 'POST',
-            headers: { 'Content-Type': 'multipart/form-data; boundary=' + boundary, 'Content-Length': body.length },
-            timeout: 60000
-        };
-        const req = mod.request(opts, (res) => {
-            let b = '';
-            res.on('data', c => b += c);
-            res.on('end', () => { try { resolve(JSON.parse(b)); } catch(e) { resolve({ raw: b }); } });
-        });
-        req.on('error', reject); req.write(body); req.end();
+// HTTP GET returning buffer (for image download)
+function httpGetBuffer(url) {
+  return new Promise((resolve, reject) => {
+    const client = url.startsWith('https') ? https : http;
+    const req = client.get(url, { timeout: 120000 }, (res) => {
+      if (res.statusCode === 302 || res.statusCode === 301) {
+        return httpGetBuffer(res.headers.location).then(resolve).catch(reject);
+      }
+      if (res.statusCode !== 200) {
+        reject(new Error('HTTP ' + res.statusCode));
+        return;
+      }
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => resolve(Buffer.concat(chunks)));
+      res.on('error', reject);
     });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+  });
 }
 
-async function downloadCover() {
-    const coverPath = 'D:/blog/content/posts/cover_' + SLUG + '.png';
-    if (fs.existsSync(coverPath) && fs.statSync(coverPath).size > 10000) {
-        console.log('Cover exists:', coverPath);
-        return coverPath;
+// Multipart upload
+function multipartUpload(url, filePath, fieldName) {
+  return new Promise((resolve, reject) => {
+    const fileBuffer = fs.readFileSync(filePath);
+    const filename = path.basename(filePath);
+    const boundary = '----FormBoundary' + Date.now().toString(36);
+    
+    let body = '';
+    body += '--' + boundary + '\r\n';
+    body += 'Content-Disposition: form-data; name="' + fieldName + '"; filename="' + filename + '"\r\n';
+    body += 'Content-Type: image/png\r\n\r\n';
+    
+    const bodyStart = Buffer.from(body, 'utf8');
+    const bodyEnd = Buffer.from('\r\n--' + boundary + '--\r\n', 'utf8');
+    const fullBody = Buffer.concat([bodyStart, fileBuffer, bodyEnd]);
+    
+    const parsed = new URL(url);
+    const options = {
+      hostname: parsed.hostname,
+      port: parsed.port || 443,
+      path: parsed.pathname + parsed.search,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=' + boundary,
+        'Content-Length': fullBody.length,
+      },
+    };
+    
+    const client = url.startsWith('https') ? https : http;
+    const req = client.request(options, (res) => {
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(Buffer.concat(chunks).toString()));
+        } catch (e) {
+          reject(new Error('Invalid JSON: ' + Buffer.concat(chunks).toString()));
+        }
+      });
+      res.on('error', reject);
+    });
+    req.on('error', reject);
+    req.write(fullBody);
+    req.end();
+  });
+}
+
+// Markdown to HTML conversion
+function markdownToHtml(md) {
+  let lines = md.split('\n');
+  let html = '';
+  
+  for (let i = 0; i < lines.length; i++) {
+    let trimmed = lines[i].trim();
+    
+    // Empty line
+    if (trimmed === '') {
+      continue;
     }
-    const seed = Math.floor(Math.random() * 99999);
-    const prompt = encodeURIComponent('warm cozy night scene with soft street lamp light, mother figure silhouette, nostalgic healing atmosphere, pastel warm colors, dreamy bokeh, japanese anime aesthetic');
-    const url = 'https://image.pollinations.ai/prompt/' + prompt + '?width=900&height=383&nologo=true&seed=' + seed;
-    console.log('Downloading cover from Pollinations...');
-    const imgData = await httpGet(url, 60000);
-    fs.writeFileSync(coverPath, imgData);
-    console.log('Cover saved:', coverPath, 'size:', imgData.length);
-    return coverPath;
+    
+    // HR
+    if (trimmed === '---') {
+      html += '<hr style="border:none;border-top:1px solid #ddd;margin:30px 0;" />\n';
+      continue;
+    }
+    
+    // H1
+    if (trimmed.startsWith('# ') && !trimmed.startsWith('## ')) {
+      const text = trimmed.substring(2);
+      html += '<h1 style="font-size:24px;font-weight:bold;color:#333;margin:0 0 20px 0;text-align:center;">' + inlineStyle(text) + '</h1>\n';
+      continue;
+    }
+    
+    // H2
+    if (trimmed.startsWith('## ')) {
+      const text = trimmed.substring(3);
+      html += '<h2 style="font-size:20px;font-weight:bold;color:#333;margin:30px 0 15px 0;border-left:4px solid #c0392b;padding-left:12px;">' + inlineStyle(text) + '</h2>\n';
+      continue;
+    }
+    
+    // Center italic text (wrapped in *...* on its own line, not bold **)
+    if (trimmed.startsWith('*') && trimmed.endsWith('*') && !trimmed.startsWith('**')) {
+      const text = trimmed.slice(1, -1);
+      html += '<p style="text-align:center;font-size:15px;color:#888;margin:20px 0;font-style:italic;">' + text + '</p>\n';
+      continue;
+    }
+    
+    // Regular paragraph
+    html += '<p style="margin-bottom:15px;font-size:16px;line-height:1.8;color:#333;">' + inlineStyle(trimmed) + '</p>\n';
+  }
+  
+  return html;
 }
 
-function mdToHtml(md) {
-    const lines = md.split('\n');
-    const html = [];
-    let inBq = false;
-    const inline = t => t.replace(/\*\*(.+?)\*\*/g, '<strong style="font-weight:bold;color:#222;">$1</strong>');
-    for (let line of lines) {
-        const s = line.trim();
-        if (!s) { if (inBq) { html.push('</blockquote>'); inBq = false; } html.push('<br/>'); continue; }
-        if (s === '---') { if (inBq) { html.push('</blockquote>'); inBq = false; } html.push('<section style="border-top:1px solid #e0e0e0;margin:30px 0;"></section>'); continue; }
-        if (s.startsWith('## ')) { if (inBq) { html.push('</blockquote>'); inBq = false; } html.push('<h2 style="font-size:20px;font-weight:bold;color:#333;margin:30px 0 16px;border-left:4px solid #8B4513;padding-left:12px;">' + inline(s.slice(3)) + '</h2>'); continue; }
-        if (s.startsWith('> ')) { if (!inBq) { html.push('<blockquote style="border-left:4px solid #e74c3c;padding:10px 15px;margin:20px 0;background:#fdf2f2;color:#666;font-style:italic;">'); inBq = true; } html.push('<p style="margin:5px 0;font-size:15px;line-height:1.8;color:#666;">' + inline(s.slice(2)) + '</p>'); continue; }
-        if (inBq) { html.push('</blockquote>'); inBq = false; }
-        html.push('<p style="font-size:16px;line-height:1.8;color:#333;margin:12px 0;text-indent:2em;">' + inline(s) + '</p>');
-    }
-    if (inBq) html.push('</blockquote>');
-    return html.join('\n');
+function inlineStyle(text) {
+  // Bold: **text**
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight:bold;color:#222;">$1</strong>');
+  // Italic: *text* (but not ** already handled)
+  text = text.replace(/\*([^*]+?)\*/g, '<em style="font-style:italic;color:#666;">$1</em>');
+  return text;
+}
+
+// Count Chinese characters + words
+function countWords(text) {
+  const chinese = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+  const english = (text.match(/[a-zA-Z]+/g) || []).length;
+  return chinese + english;
 }
 
 async function main() {
-    const creds = loadEnv();
-    console.log('App ID:', creds.appId ? creds.appId.substring(0,6) + '...' : 'MISSING');
-    if (!creds.appId || !creds.appSecret) { console.error('Missing credentials'); process.exit(1); }
+  try {
+    // 1. Read env
+    console.log('=== Step 1: Reading .env ===');
+    const env = readEnv(ENV_FILE);
+    const appId = env.WEIXIN_APP_ID;
+    const appSecret = env.WEIXIN_APP_SECRET;
+    console.log('APP_ID:', appId);
+    console.log('APP_SECRET:', appSecret.substring(0, 6) + '***');
 
-    // 1. Token
-    console.log('Step 1: Getting access token...');
-    const tokenBuf = await httpGet('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + creds.appId + '&secret=' + creds.appSecret);
-    const tokenRes = JSON.parse(tokenBuf.toString());
-    if (!tokenRes.access_token) { console.error('Token error:', JSON.stringify(tokenRes)); process.exit(1); }
-    const token = tokenRes.access_token;
-    console.log('Token OK');
+    // 2. Check for existing cover image
+    console.log('\n=== Step 2: Checking for cover image ===');
+    const coverPath = path.join(POSTS_DIR, 'cover_' + ARTICLE_DATE + '.png');
+    let useCoverPath = coverPath;
+    
+    if (fs.existsSync(coverPath)) {
+      console.log('Found today\'s cover:', coverPath);
+    } else {
+      // Find latest cover
+      const files = fs.readdirSync(POSTS_DIR)
+        .filter(f => f.startsWith('cover_') && (f.endsWith('.png') || f.endsWith('.jpg')))
+        .sort()
+        .reverse();
+      if (files.length > 0) {
+        useCoverPath = path.join(POSTS_DIR, files[0]);
+        console.log('Using latest cover:', useCoverPath);
+      } else {
+        console.log('No existing cover found, will download new one...');
+        const prompt = encodeURIComponent('warm nostalgic night scene street light dreamy healing watercolor painting style');
+        const seed = Math.floor(Math.random() * 100000);
+        const imageUrl = 'https://image.pollinations.ai/prompt/' + prompt + '?width=900&height=383&nologo=true&seed=' + seed;
+        console.log('Downloading cover from:', imageUrl);
+        const imgBuffer = await httpGetBuffer(imageUrl);
+        fs.writeFileSync(coverPath, imgBuffer);
+        useCoverPath = coverPath;
+        console.log('Cover saved to:', coverPath);
+      }
+    }
 
-    // 2. Cover
-    console.log('Step 2: Uploading cover...');
-    const coverPath = await downloadCover();
-    const uploadRes = await httpsPostMultipart(
-        'https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=' + token + '&type=image',
-        coverPath
-    );
-    if (!uploadRes.media_id) { console.error('Upload error:', JSON.stringify(uploadRes)); process.exit(1); }
-    console.log('Cover uploaded:', uploadRes.media_id);
+    // 3. Read article and convert to HTML
+    console.log('\n=== Step 3: Converting markdown to HTML ===');
+    const mdContent = fs.readFileSync(path.join(POSTS_DIR, ARTICLE_DATE + '-insomnia-8090.md'), 'utf8');
+    let htmlContent = markdownToHtml(mdContent);
+    
+    // Add footer
+    htmlContent += '\n<hr style="border:none;border-top:1px solid #ddd;margin:40px 0 20px 0;" />\n';
+    htmlContent += '<p style="text-align:center;font-size:14px;color:#999;margin:10px 0;">深夜解忧铺</p>\n';
+    htmlContent += '<p style="text-align:center;font-size:14px;color:#999;margin:10px 0;">你的心事，有人听。</p>\n';
+    
+    console.log('HTML length:', htmlContent.length, 'chars');
+    
+    // Count words
+    const wordCount = countWords(mdContent);
+    console.log('Article word count:', wordCount);
 
-    // 3. MD -> HTML
-    console.log('Step 3: Converting markdown...');
-    const md = fs.readFileSync(MD_PATH, 'utf-8');
-    // Remove YAML frontmatter
-    const body = md.replace(/^---[\s\S]*?---\s*/, '').trim();
-    // Remove H1 title (already in title field)
-    const bodyNoTitle = body.replace(/^#\s+.+\n/, '').trim();
-    const htmlBody = mdToHtml(bodyNoTitle);
-    const footer = '\n<section style="border-top:1px solid #e0e0e0;margin:40px 0 20px;"></section>\n<div style="text-align:center;margin:20px 0;">\n<p style="font-size:14px;color:#999;margin:0 0 8px;">深夜解忧铺</p>\n<p style="font-size:16px;color:#8B4513;font-weight:bold;margin:0;">你的心事，有人听</p>\n</div>';
-    const htmlContent = '<section style="max-width:100%;padding:20px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;">\n' + htmlBody + '\n' + footer + '\n</section>';
-    console.log('HTML length:', htmlContent.length);
+    // Save HTML for reference
+    fs.writeFileSync(path.join(POSTS_DIR, ARTICLE_DATE + '-insomnia-8090.html'), htmlContent);
+    console.log('HTML saved for reference');
 
-    // 4. Create draft (NO author field!)
-    console.log('Step 4: Creating draft...');
-    const article = {
+    // 4. Get access token
+    console.log('\n=== Step 4: Getting access token ===');
+    const tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + appId + '&secret=' + appSecret;
+    const tokenResult = await httpGetJson(tokenUrl);
+    if (tokenResult.errcode) {
+      console.error('Token error:', tokenResult);
+      process.exit(1);
+    }
+    const accessToken = tokenResult.access_token;
+    console.log('Access token obtained:', accessToken.substring(0, 20) + '...');
+
+    // 5. Upload cover image
+    console.log('\n=== Step 5: Uploading cover image ===');
+    const uploadUrl = 'https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=' + accessToken + '&type=image';
+    console.log('Uploading:', useCoverPath);
+    const uploadResult = await multipartUpload(uploadUrl, useCoverPath, 'media');
+    console.log('Upload result:', JSON.stringify(uploadResult));
+    if (uploadResult.errcode) {
+      console.error('Upload error:', uploadResult);
+      process.exit(1);
+    }
+    const thumbMediaId = uploadResult.media_id;
+    console.log('thumb_media_id:', thumbMediaId);
+
+    // 6. Create draft
+    console.log('\n=== Step 6: Creating draft ===');
+    const draftUrl = 'https://api.weixin.qq.com/cgi-bin/draft/add?access_token=' + accessToken;
+    const draftData = {
+      articles: [{
         title: TITLE,
         digest: DIGEST,
         content: htmlContent,
-        thumb_media_id: uploadRes.media_id,
-        content_source_url: '',
+        thumb_media_id: thumbMediaId,
         need_open_comment: 1,
-        only_fans_can_comment: 0
+        only_fans_can_comment: 0,
+      }]
     };
-    const draftData = JSON.stringify({ articles: [article] });
-    const draftRes = await httpsPost(
-        'https://api.weixin.qq.com/cgi-bin/draft/add?access_token=' + token,
-        draftData,
-        'application/json; charset=utf-8'
-    );
-    if (!draftRes.media_id) { console.error('Draft error:', JSON.stringify(draftRes)); process.exit(1); }
-    console.log('Draft created:', draftRes.media_id);
+    const draftResult = await httpPostJson(draftUrl, draftData);
+    console.log('Draft result:', JSON.stringify(draftResult));
+    if (draftResult.errcode) {
+      console.error('Draft error:', draftResult);
+      process.exit(1);
+    }
+    const mediaId = draftResult.media_id;
+    console.log('Draft media_id:', mediaId);
 
-    // 5. Verify
-    console.log('Step 5: Verifying...');
-    const bgRes = await httpsPost(
-        'https://api.weixin.qq.com/cgi-bin/draft/batchget?access_token=' + token,
-        JSON.stringify({ offset: 0, count: 5, no_content: true }),
-        'application/json; charset=utf-8'
-    );
-    for (const item of (bgRes.item || [])) {
-        if (item.media_id === draftRes.media_id) {
-            const draftTitle = item.content.news_item[0].title;
-            console.log('Verified title:', draftTitle);
-            // Check for unicode escape (garbled)
-            if (draftTitle.includes('\\u')) {
-                console.error('WARNING: Title may be garbled!');
-            }
-            break;
-        }
+    // 7. Verify
+    console.log('\n=== Step 7: Verifying draft ===');
+    const verifyUrl = 'https://api.weixin.qq.com/cgi-bin/draft/batchget?access_token=' + accessToken;
+    const verifyResult = await httpPostJson(verifyUrl, { offset: 0, count: 1 });
+    console.log('Verify result:', JSON.stringify(verifyResult, null, 2));
+    
+    if (verifyResult.item && verifyResult.item.length > 0) {
+      const firstDraft = verifyResult.item[0];
+      const draftTitle = firstDraft.content && firstDraft.content.news_item && firstDraft.content.news_item[0] 
+        ? firstDraft.content.news_item[0].title 
+        : 'N/A';
+      console.log('\n=== VERIFICATION ===');
+      console.log('Latest draft title:', draftTitle);
+      console.log('Title contains Chinese:', /[\u4e00-\u9fff]/.test(draftTitle));
     }
 
-    console.log('\n=== DONE ===');
-    console.log('Title:', TITLE);
-    console.log('Digest:', DIGEST);
-    console.log('Draft media_id:', draftRes.media_id);
-    console.log('Cover media_id:', uploadRes.media_id);
-    console.log('Markdown:', MD_PATH);
-    console.log('Action: Go to WeChat backend -> 草稿箱 -> publish manually');
+    // Summary
+    console.log('\n=== SUMMARY ===');
+    console.log('Article Title:', TITLE);
+    console.log('Word Count:', wordCount);
+    console.log('Draft media_id:', mediaId);
+    console.log('Cover used:', useCoverPath);
+    console.log('Verification: Draft created successfully');
+
+  } catch (err) {
+    console.error('Error:', err.message);
+    console.error(err.stack);
+    process.exit(1);
+  }
 }
 
-main().catch(e => { console.error('Fatal:', e); process.exit(1); });
+main();
