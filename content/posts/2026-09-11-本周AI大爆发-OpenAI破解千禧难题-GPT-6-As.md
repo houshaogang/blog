@@ -1,3 +1,12 @@
+---
+title: "🔥本周AI大爆发：OpenAI破解千禧难题，GPT-6 Astra问世，Meta Muse刷榜美国App Store"
+date: 2026-09-11
+draft: false
+tags: ["AI", "GPT-6", "Astra", "MetaMuse", "千禧年难题", "人工智能", "科技资讯"]
+categories: ["AI资讯"]
+summary: "🔥本周AI大爆发：OpenAI破解千禧难题，GPT-6 Astra问世，Meta Muse刷榜美国App Store"
+---
+
 ## 🧠 OpenAI用万枚AI智能体88小时破解千禧年数学难题
 
 2026年9月9日，OpenAI扔下了一颗重磅炸弹：其AI智能体集群成功破解了Navier-Stokes方程——这是数学界七大千禧年难题之一，困扰数学家近一个世纪。更令人震撼的是，从启动到完成证明，整个过程仅耗时88小时，生成了长达165页的证明。
