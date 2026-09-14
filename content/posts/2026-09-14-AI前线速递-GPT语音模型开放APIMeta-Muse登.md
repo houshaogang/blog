@@ -1,3 +1,12 @@
+---
+title: "AI前线速递：GPT语音模型开放API、Meta Muse登顶App Store、ChatGPT图片生成再进化"
+date: 2026-09-14
+draft: false
+tags: ["AI", "GPT", "Meta", "Muse", "ChatGPT", "语音交互", "图片生成", "科技资讯", "人工智能"]
+categories: ["AI资讯"]
+summary: "AI前线速递：GPT语音模型开放API、Meta Muse登顶App Store、ChatGPT图片生成再进化"
+---
+
 # 🤖 AI前线速递：GPT语音模型开放API、Meta Muse登顶App Store、ChatGPT图片生成再进化
 
 > 2026年9月，AI行业迎来密集发布周。从OpenAI到Meta，从语音交互到图片生成，各大厂商纷纷亮出最新成果。本期为你梳理过去72小时最值得关注的AI大事件。
