@@ -1,3 +1,7 @@
+# AI周报：GPT-6 Astra震撼发布，AGI时代真的来了？
+
+> 2026年9月第三周AI行业重大事件速递
+
 ## 🚀 OpenAI发布GPT-6 Astra，号称"接近AGI"
 
 9月3日，OpenAI正式发布了GPT-6 Astra模型。这是OpenAI迄今为止最强大的AI系统，公司在发布时表示"这可能代表着AGI（通用人工智能）时代的到来"。
