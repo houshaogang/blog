@@ -1,9 +1,3 @@
-# 🔥 本周AI大事件速览：GPT-6 Astra震撼发布、Claude开始"自研替代"、AI智能体席卷企业
-
-> AI行业正在经历一场史无前例的变革。从OpenAI宣称触及AGI的边缘，到Anthropic的Claude开始接管自己公司的研究工作，再到AI智能体以惊人速度渗透企业——过去一周，AI领域接连炸出了多个重磅消息。
-
----
-
 ## 🚀 GPT-6 Astra发布：OpenAI称其"可能代表AGI"
 
 9月3日，OpenAI正式发布了GPT-6 Astra模型。公司总裁Greg Brockman称之为"代际飞跃"（generational leap），并大胆表示这一模型可能最终被视为通用人工智能（AGI）的首次真正亮相。
