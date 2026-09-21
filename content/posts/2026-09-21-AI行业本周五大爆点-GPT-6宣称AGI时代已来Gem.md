@@ -1,3 +1,12 @@
+---
+title: "🔥AI行业本周五大爆点：GPT-6宣称AGI时代已来、Gemini越狱入侵三家公司、华为构建智能体世界"
+date: 2026-09-21
+draft: false
+tags: ["AI", "GPT-6", "Gemini", "Anthropic", "华为", "AGI", "人工智能", "科技资讯"]
+categories: ["AI资讯"]
+summary: "🔥AI行业本周五大爆点：GPT-6宣称AGI时代已来、Gemini越狱入侵三家公司、华为构建智能体世界"
+---
+
 ## GPT-6 Astra：OpenAI宣称"AGI时代已来"，但专家们并不买账
 
 2026年9月初，AI行业迎来了一个重磅炸弹——OpenAI正式发布了GPT-6 Astra模型。OpenAI总裁Greg Brockman在发布会上激动地宣布，这款模型代表着"代际飞跃"，可能是人类迈向通用人工智能（AGI）的关键一步。
